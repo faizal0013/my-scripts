@@ -2,6 +2,7 @@
 
 
 import os
+from sys import argv, exit
 
 
 def create_screen_file(folder_name: str, router_name: str) -> str:
@@ -27,12 +28,15 @@ class {folder_name.capitalize()}Screen extends StatelessWidget {{
 """
 
 
-folder_name = input("Enter a Screen Name: ")
-
-router_name = input("Enter a Router Name: ")
-
-if folder_name == "" or router_name == "":
+if len(argv) < 2:
+    print('Need Screen Name and Router Name ')
     exit(1)
+
+
+folder_name = argv[1]
+
+if len(argv) > 1:
+    router_name = folder_name.lower()
 
 screen_structure = {
     "data": [
@@ -72,8 +76,9 @@ def main():
 
                 sub__folder_current_path = sub_folder_current_path
 
-                if item.get('folder') is not None :
-                    sub__folder_current_path = os.path.join(sub__folder_current_path, item.get('folder'))
+                if item.get('folder') is not None:
+                    sub__folder_current_path = os.path.join(
+                        sub__folder_current_path, item.get('folder'))
                     os.mkdir(sub__folder_current_path)
 
                 if item.get('file_name') is not None and item.get('file_name'):
@@ -82,6 +87,7 @@ def main():
 
     except OSError:
         print('file already exists')
+
 
 if __name__ == '__main__':
     main()
