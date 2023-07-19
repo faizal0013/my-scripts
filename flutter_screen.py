@@ -60,25 +60,25 @@ class FlutterScreen():
 
     def create_screen_file(self, folder_name: str, router_name: str) -> str:
         return f"""
-    import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-    class {folder_name.capitalize()}Screen extends StatelessWidget {{
-    const {folder_name.capitalize()}Screen({{super.key}});
+class {folder_name.capitalize()}Screen extends StatelessWidget {{
+  const {folder_name.capitalize()}Screen({{super.key}});
 
-    static const String routerName = '/{router_name}';
-    
-    @override
-    Widget build(BuildContext context) {{
-        return const Scaffold(
-        body: Text(
-            '{folder_name.capitalize()} Screen',
-            textAlign: TextAlign.center,
-        ),
-        );
-    }}
-    }}
+  static const String routerName = '/{router_name}';
 
-    """
+  @override
+  Widget build(BuildContext context) {{
+    return const Scaffold(
+      body: Text(
+        '{folder_name.capitalize()} Screen',
+        textAlign: TextAlign.center,
+      ),
+    );
+  }}
+}}
+
+"""
 
 
 def main():
